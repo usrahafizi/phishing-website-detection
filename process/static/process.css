@@ -1,0 +1,27 @@
+#imgTitle{
+    width: 30px;
+    height: 30px;
+    display: inline;
+}
+h4{
+    border-bottom: 1px solid whitesmoke;
+    padding: 2px;
+}
+.grid{
+    width: 100%;
+    height: 100%;
+    
+}
+.grid-header{
+    font-size: 15px;
+    height: 42%;
+    padding-top: 2px;
+    background: #deecff;
+}
+.grid-body{
+    padding-top: 7px;
+    padding-bottom: 2px;
+}
+.col{
+    padding-bottom: 13px;
+}

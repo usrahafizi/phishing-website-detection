@@ -1,0 +1,33 @@
+.alert-primary {    
+    width: 340px;
+    margin-top: 10px;
+}
+h5{
+    text-align: center;
+}
+span img{
+    margin-top: -10px;
+    width: 30px;
+    height: 30px;
+}
+button{
+    width: 49%;
+}
+#spinners{
+    display: none;
+}
+.spinner-grow{
+    width: 15px;
+    height: 15px;
+}
+#simpleCont{
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.btnPst{
+    width: 100%;
+}
+.btnPst:hover{
+    border: 3px solid white;
+    
+}

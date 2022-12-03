@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection</title>
+    <!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='process.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <!-- <script defer src="https://pyscript.net/latest/pyscript.js"></script> -->
+    <script src="{{ url_for('static',filename='jquery.js') }}"></script>
+    <script src="../../popup.js"></script>
+
+
+
+</head>
+
+<body>
+
+    <script>
+
+        url = window.location.search.substring(1);
+        url = url.slice(5,);
+    </script>
+
+
+    <div class="container" style="margin-left:0px;margin-top: 5px;">
+        <div class="alert alert-primary" role="alert">
+            <h4>CATch<p style="display:inline;font-family: 'Times New Roman', Times, serif;"> Phish</p> <span
+                    class="badge"><img id="imgTitle" src="{{ url_for('static',filename='ph1.png') }}"></span></h4>
+            <div class="input-group mb-3" style="margin-top: 15px;height: 40px;font-size: 20px;">
+                <span class="input-group-text" id="basic-addon1">&#128279;</span>
+                <input name="url" id="url" type="text" class="form-control" disabled="disabled" aria-label="Username"
+                    aria-describedby="basic-addon1">
+                <span class="input-group-text" id="basic-addon2"> </span>
+            </div>
+            <h5 id="result" style="display:none;">{{result}}</h5>
+            <h5 id="forResult"></h5>
+            <script>
+                var result = document.getElementById("result").innerText[1]; // "[1]" => 1
+                if (result === "1") {
+                    var result = document.getElementById("forResult").innerText = "This is a Safe URL!";
+                    document.getElementById("basic-addon2").style = "background-color: greenyellow;";
+                    var xxx = document.getElementById("basic-addon2").innerHTML = "<span>&check;</span>";
+                    document.getElementsByClassName("input-group")[0].style = "box-shadow: 2px 2px 4px greenyellow; border: 2px solid greenyellow;"
+                } else {
+
+                    var result = document.getElementById("forResult").innerText = "This is a Phishing URL!";
+                    document.getElementById("basic-addon2").style = "background-color: red;";
+                    var xxx = document.getElementById("basic-addon2").innerHTML = "<span>&#x2717;</span>";
+                    document.getElementsByClassName("input-group")[0].style = "box-shadow: 2px 2px 4px red; border: 2px solid red;"
+
+                }
+            </script>
+            <script>
+                document.getElementById("url").value = url;
+            </script>
+
+        </div>
+
+        <div class="alert alert-secondary" role="alert" style="text-align: center;padding: 0px;">
+            <div class="card text-center" style="margin: 0px;height: 363px;">
+                <div class="card-header" style="text-align: left;">
+                    Details <p style="margin-top: 0px;display: inline;margin-left: 54%" id="usability"></p>
+                    <script>
+                        var result = document.getElementById("result").innerText[1];
+                        if (result === "1") {
+                            var xxx = document.getElementById("usability").innerText = "This website is 97% safe to use!";
+                        } else {
+                            var xxx = document.getElementById("usability").innerText = "This website is not safe to use!";
+                        }
+                    </script>
+                </div>
+                <div class="card-body">
+                    <p id="dataList" style="display:none;">{{dataList}}</p>
+
+                    <script>
+                        var indexing = ["Using IP", "Long URL", "Short URL", "Using @ symbol", "Redirecting",
+                            "Prefix/Suffix", "Sub Domains", "HTTPS", "DomainReg length", "Favicon", "NonStd Port",
+                            "Https Domain URL", "Request URL", "Anchor URL", "Links in Script Tags", "Server Form Handler",
+                            "Info Email", "Abnormal URL", "Website Forwarding", "Status Barcust", "Disable Right Click",
+                            "Using Popup Window", "Ifram Redirection", "Domain Age", "DNS Recording", "Website Traffic",
+                            "Page Rank", "Google Index", "Links pointing to page", "Stats Report"];
+                        var result = document.getElementById("dataList").innerText;
+                        //29 comma, 2 bracket, 30 data
+                        var dataArray = JSON.parse(result);
+
+                    </script>
+
+                    <!-- griding the details portion -->
+                    <div class="container text-center" style="margin-bottom:0px ;">
+                        <!-- first row -->
+                        <div class="row">
+                            <!-- card-griding 1st column -->
+                            <div class="col">
+                                <div class="card grid">
+                                    <p class="card-header grid-header">Safety</p>
+                                    <div class="card-body grid-body">
+                                        <p class="card-text" id="safety">96% safe to use</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- card-griding 2nd column -->
+                            <div class="col">
+                                <div class="card grid">
+                                    <p class="card-header grid-header">Using IP</p>
+                                    <div class="card-body grid-body">
+                                        <p class="card-text" id="usingIP"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card-griding 3rd column -->
+                            <div class="col">
+                                <div class="card grid">
+                                    <p class="card-header grid-header">Redirecting</p>
+                                    <div class="card-body grid-body">
+                                        <p class="card-text" id="redirecting"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- second row -->
+                        <div class="row">
+                            <!-- card-griding 1st column -->
+                            <div class="col">
+                                <div class="card grid">
+                                    <p class="card-header grid-header">Non Standard Port</p>
+                                    <div class="card-body grid-body">
+                                        <p class="card-text" id="stdPort"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- card-griding 2nd column -->
+                            <div class="col">
+                                <div class="card grid">
+                                    <p class="card-header grid-header">Domain Age</p>
+                                    <div class="card-body grid-body">
+                                        <p class="card-text" id="domainAge"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card-griding 3rd column -->
+                            <div class="col">
+                                <div class="card grid">
+                                    <p class="card-header grid-header">Traffic</p>
+                                    <div class="card-body grid-body">
+                                        <p class="card-text" id="traffic"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- third row -->
+                        <div class="row">
+                            <!-- card-griding 1st column -->
+                            <div class="col">
+                                <div class="card grid">
+                                    <p class="card-header grid-header">Page Rank</p>
+                                    <div class="card-body grid-body">
+                                        <p class="card-text" id="pageRank"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- card-griding 2nd column -->
+                            <div class="col">
+                                <div class="card grid">
+                                    <p class="card-header grid-header">Google Index</p>
+                                    <div class="card-body grid-body">
+                                        <p class="card-text" id="googleIndex"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card-griding 3rd column -->
+                            <div class="col">
+                                <div class="card grid">
+                                    <p class="card-header grid-header">Https Protocol</p>
+                                    <div class="card-body grid-body">
+                                        <p class="card-text" id="https"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- end details griding -->
+
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <script>
+                    // document.write(dataArray.indexOf)
+                    var result = document.getElementById("result").innerText[1];
+                    if (result === "1") {
+                        var xxx = document.getElementById("safety").innerText = "96% safe to use";
+                    } else {
+                        var xxx = document.getElementById("safety").innerText = "Not safe to use!";
+                    }
+                    for (var x in dataArray, indexing) {
+                        if (indexing[x] === "Using IP") {
+                            if (dataArray[x] === 1) {
+                                document.getElementById("usingIP").innerText = "NO, doesn't use IP";
+                            } else {
+                                document.getElementById("usingIP").innerText = "Yes, using IP";
+                            }
+                        } else if (indexing[x] === "Redirecting") {
+                            if (dataArray[x] === 1) {
+                                document.getElementById("redirecting").innerText = "NO";
+                            } else {
+                                document.getElementById("redirecting").innerText = "Yes, Redirects to anywhere else";
+                            }
+                        } else if (indexing[x] === "NonStd Port") {
+                            if (dataArray[x] === 1) {
+                                document.getElementById("stdPort").innerText = "NO, using standard port";
+                            } else {
+                                document.getElementById("stdPort").innerText = "Yes, using non standard port";
+                            }
+                        } else if (indexing[x] === "Domain Age") {
+                            if (dataArray[x] === 1) {
+                                document.getElementById("domainAge").innerText = "Enough Old";
+                            } else {
+                                document.getElementById("domainAge").innerText = "New launched website";
+                            }
+                        } else if (indexing[x] === "Website Traffic") {
+                            if (dataArray[x] === -1) {
+                                document.getElementById("traffic").innerText = "High traffic";
+                            } else if (dataArray[x] === 0) {
+                                document.getElementById("traffic").innerText = "Medium traffic using routinly";
+                            } else {
+                                document.getElementById("traffic").innerText = "less traffic, uses rarely";
+                            }
+                        } else if (indexing[x] === "Page Rank") {
+                            if (dataArray[x] === 1) {
+                                document.getElementById("pageRank").innerText = "Low ranking";
+                            } else {
+                                document.getElementById("pageRank").innerText = "High ranking";
+                            }
+                        } else if (indexing[x] === "Google Index") {
+                            if (dataArray[x] === 1) {
+                                document.getElementById("googleIndex").innerText = "Yes";
+                            } else {
+                                document.getElementById("googleIndex").innerText = "NO, doesn't index by google";
+                            }
+                        } else if (indexing[x] === "HTTPS") {
+                            if (dataArray[x] === 1) {
+                                document.getElementById("https").innerText = "Yes, using Https protocol";
+                            } else {
+                                document.getElementById("https").innerText = "NO, doesn't using Https protocol";
+                            }
+                        }
+                        console.log(dataArray[x], indexing[x]);
+                    }
+                </script>
+                <div class="card-footer text-muted">
+                    &copy; 2022 Copyrighted by Yusra Hafizi
+                </div>
+            </div>
+        </div>
+        <script>
+            document.getElementsByClassName("alert")[0].style = "width:" + (screen.availWidth / 2 + 30) + "px;margin-bottom:6px;text-align:center;padding-top:3px;";
+            document.getElementsByClassName("alert")[1].style = "width:" + (screen.availWidth / 2 + 30) + "px";
+        </script>
+    </div>
+    <h5>
+
+    </h5>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

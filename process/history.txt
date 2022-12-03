@@ -1,0 +1,16 @@
+https://codeigo.com/,Legitimate,11/2/2022,20:37:19
+https://www.youtube.com/watch?v=YBuItStMpHc,Legitimate,11/2/2022,20:38:11
+https://stackoverflow.com/questions/7431268/how-to-read-data-from-csv-file-using-javascript/12289296,Legitimate,11/2/2022,21:09:01
+https://www.youtube.com/watch?v=YBuItStMpHc,Legitimate,2022-11-02,21:12:27
+http://adm692.at.ua/reconfirm_now.html,Legitimate,2022-11-02,21:14:31
+https://stackoverflow.com/questions/64702831/how-do-i-move-the-bottom-label-to-the-extreme-right-in-tkinter,Legitimate,2022-11-02,21:43:48
+https://www.w3schools.com/,Legitimate,2022-11-03,09:37:17
+https://www.w3schools.com/,Legitimate,2022-11-03,09:39:48
+http://Malicious84.7Malicious.Malicious9Benign.2Benign6:8Benign8/Malicious/www.bn.com.pe/,Phishing,2022-11-03,09:40:30
+https://www.w3schools.com/,Legitimate,2022-12-01,17:40:50
+https://www.w3schools.com/,Legitimate,2022-12-01,18:13:34
+https://www.w3schools.com/,Legitimate,2022-12-01,18:15:41
+https://www.w3schools.com/,Legitimate,2022-12-01,18:23:17
+https://www.w3schools.com/,Legitimate,2022-12-01,18:24:57
+https://www.facebook.com/,Legitimate,2022-12-01,18:49:46
+https://www.facebook.com/,Legitimate,2022-12-01,18:52:04

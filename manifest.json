@@ -1,0 +1,24 @@
+{
+    "name" : "Phish intro",
+    "description" : "Introduction to Phishing detection",
+    "version" : "4.0.1.3",
+    "manifest_version" : 3,
+    "background" : {
+        "service_worker":"background.js"
+    },
+    "permissions" : ["storage","activeTab", "contextMenus","clipboardRead"],
+    "action" : {
+        "default_popup": "popup.html"
+    },
+    "options_page" : "options.html",
+    "content_scripts" : [
+        {
+            "matches" : ["https://*.google.com/*"],
+            "js": ["content.js"]
+        }
+    ]
+    
+
+
+
+}
